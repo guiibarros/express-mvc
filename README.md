@@ -1,6 +1,6 @@
 # Users Post Crud
 
-Simple express MVC and CRUD project using typescript and docker.
+Simple express MVC and CRUD project using typescript and docker. Instagram-like API, with users and posts entities
 
 ## Start docker container
 
