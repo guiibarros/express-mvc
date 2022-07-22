@@ -1,5 +1,5 @@
 {
-  "name": "users-crud",
+  "name": "express-mvc",
   "version": "1.0.0",
   "main": "dist/server.js",
   "license": "MIT",
@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "express": "^4.18.1",
+    "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.7.0",
+    "typeorm": "^0.3.7",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
