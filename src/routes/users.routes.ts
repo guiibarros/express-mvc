@@ -1,19 +1,13 @@
 import { Router } from 'express';
+import { container } from 'tsyringe';
 
 import { UsersController } from '@controllers/UsersController';
-import { UsersRepository } from '@repositories/implementations/UsersRepository';
 
 const usersRoutes = Router();
 
-const usersRepository = UsersRepository.getInstance(); // Singleton
-const usersController = new UsersController(usersRepository);
+const usersController = container.resolve(UsersController);
 
-usersRoutes.get('/', (request, response) => {
-  return usersController.index(request, response);
-});
-
-usersRoutes.post('/', (request, response) => {
-  return usersController.post(request, response);
-});
+usersRoutes.get('/', usersController.list);
+usersRoutes.post('/', usersController.create);
 
 export { usersRoutes };

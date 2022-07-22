@@ -5,18 +5,8 @@ import { IUsersRepository } from '@repositories/IUsersRepository';
 export class UsersRepository implements IUsersRepository {
   private readonly repository: User[];
 
-  private static INSTANCE: IUsersRepository;
-
-  private constructor() {
+  public constructor() {
     this.repository = [];
-  }
-
-  public static getInstance(): IUsersRepository {
-    if (!UsersRepository.INSTANCE) {
-      UsersRepository.INSTANCE = new UsersRepository();
-    }
-
-    return UsersRepository.INSTANCE;
   }
 
   public create(data: ICreateUserDTO): void {
