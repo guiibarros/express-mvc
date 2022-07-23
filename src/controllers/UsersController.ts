@@ -12,23 +12,23 @@ export class UsersController {
   ) {}
 
   @autoBind
-  public list(request: Request, response: Response): Response {
-    const users = this.usersRepository.listAll();
+  public async list(request: Request, response: Response): Promise<Response> {
+    const users = await this.usersRepository.listAll();
 
     return response.json(users);
   }
 
   @autoBind
-  public create(request: Request, response: Response) {
+  public async create(request: Request, response: Response): Promise<Response> {
     const { name, lastName, email, password, nickname, bio } = request.body;
 
-    const userAlreadyExists = this.usersRepository.findByEmail(email);
+    const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {
       throw new Error('User already exists.');
     }
 
-    this.usersRepository.create({
+    await this.usersRepository.create({
       name,
       lastName,
       email,

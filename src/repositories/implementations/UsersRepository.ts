@@ -1,31 +1,30 @@
+import { Repository } from 'typeorm';
+
 import { ICreateUserDTO } from '@dto/ICreateUserDTO';
-import { User } from '@models/User';
+import { User } from '@entities/User';
 import { IUsersRepository } from '@repositories/IUsersRepository';
 
+import { dataSource } from '../../database';
+
 export class UsersRepository implements IUsersRepository {
-  private readonly repository: User[];
+  private readonly repository: Repository<User>;
 
   public constructor() {
-    this.repository = [];
+    this.repository = dataSource.getRepository(User);
   }
 
-  public create(data: ICreateUserDTO): void {
-    const user = new User();
+  public async create(data: ICreateUserDTO): Promise<void> {
+    const user = this.repository.create(data);
 
-    Object.assign(user, {
-      ...data,
-      created_at: new Date(),
-    });
-
-    this.repository.push(user);
+    await this.repository.save(user);
   }
 
-  public listAll(): User[] {
-    return this.repository;
+  public async listAll(): Promise<User[]> {
+    return this.repository.find();
   }
 
-  public findByEmail(email: string): User {
-    const user = this.repository.find((user) => user.email === email);
+  public async findByEmail(email: string): Promise<User> {
+    const user = await this.repository.findOne({ where: { email } });
 
     return user;
   }
