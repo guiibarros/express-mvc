@@ -2,8 +2,7 @@ import 'reflect-metadata';
 import '@shared/container';
 import express from 'express';
 
-import { dataSource } from '@shared/infra/typeorm';
-
+import { dataSource } from '../typeorm';
 import { routes } from './routes';
 
 dataSource

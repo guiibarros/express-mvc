@@ -1,5 +1,8 @@
-import { resolve } from 'path';
 import { DataSource } from 'typeorm';
+
+import { User } from '@entities/infra/typeorm/User';
+
+import { CreateUsers1658541025995 } from './migrations/1658541025995-CreateUsers';
 
 export const dataSource = new DataSource({
   type: 'postgres',
@@ -8,6 +11,6 @@ export const dataSource = new DataSource({
   username: 'docker',
   password: 'docker',
   database: 'docker',
-  entities: [resolve(__dirname, '..', '**', 'entities', '*.ts')],
-  migrations: [resolve(__dirname, '..', '**', 'migrations', '*.ts')],
+  entities: [User],
+  migrations: [CreateUsers1658541025995],
 });
