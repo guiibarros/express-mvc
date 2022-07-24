@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 
-import { User } from '@entities/infra/typeorm/User';
+import { User } from '@infra/typeorm/entities/User';
 
 import { CreateUsers1658541025995 } from './migrations/1658541025995-CreateUsers';
 

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'tsyringe';
 
-import { IUsersRepository } from '@repositories/IUsersRepository';
+import { IUsersRepository } from '@infra/typeorm/repositories/IUsersRepository';
 import { autoBind } from '@shared/decorators/autoBind';
 
 @injectable()
