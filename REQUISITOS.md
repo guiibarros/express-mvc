@@ -1,4 +1,4 @@
-## Cadástro de usuários
+## Cadastro de usuários
 
 ### RF
 - Deve ser possível cadastrar um novo usuário
